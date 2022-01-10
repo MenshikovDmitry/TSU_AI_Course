@@ -36,7 +36,7 @@ foo@bar:~$ python model.py evaluate --dataset=/path/to/evaluation/dataset
 foo@bar:~$ python model.py predict --dataset=/path/to/evaluation/dataset !!!!FORMAT
 ```
 - Flask Application `flask_app.py`. Runs REST API service on port 5000. 
-- `Dockerfile`
+ - `Dockerfile`
 - `docker-compose.yaml`
 - CI/CD script for github or gitlab
 ### Dataset
@@ -50,9 +50,9 @@ At this point we expect to see fully working CLI application
 ##### 3. REST API interface fith `Flask`
 Serving on port 5000. Do not forget to catch and log Error 500. It is a good Idea to test your API from Jupyter Notebook with `requests` module.
 Endpoints:
-    - `/api/predict`. Recieves list `[[movie_id_1, movie_id_2, .., movie_id_N ], [rating_1, rating_2, .., rating_N]]` and returns TOP M (default 20, also a parameter) recommended movies with corresponding estimated rating. Sort descending. `[[movie_name_1, movie_name_2, .., movie_name_M], [rating_1, rating_2, .., rating_M]]`
-    - `/api/log`. Last 20 rows of log.
-    - `/api/info`. Service Information: Your Credentials, Date and time of the build of the Docker image, Date, time and metrics of the training of the currently deployed model.
+- `/predict`. Recieves list `[[movie_id_1, movie_id_2, .., movie_id_N ], [rating_1, rating_2, .., rating_N]]` and returns TOP M (default 20, also a parameter) recommended movies with corresponding estimated rating. Sort descending. `[[movie_name_1, movie_name_2, .., movie_name_M], [rating_1, rating_2, .., rating_M]]`
+- `/api/log`. Last 20 rows of log.
+- `/api/info`. Service Information: Your Credentials, Date and time of the build of the Docker image, Date, time and metrics of the training of the currently deployed model.
 ##### 4. Docker and docker-compose
 Docker basically locks your application inside the virtual environment called a container, containing the necessary dependencies. The container wipes everything after the restart. You do not want to pack the model artifacts to the docker image. Instead, map the local folder "data" with corresponding folder inside the container. Keep the artifacts like model data and log file persistant.
 - remember to expose port 5000
@@ -80,4 +80,3 @@ If those steps are completed, I do not need to take care of the dependencies and
 ### Useful Resources
 - [PyCharm: Python IDE](https://www.jetbrains.com/pycharm/)
 - [Markdown Editor](https://dillinger.io/)
-
