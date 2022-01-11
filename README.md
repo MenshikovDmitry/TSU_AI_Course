@@ -1,11 +1,11 @@
 # Homework 1 
-Recommendation System + DevOps Essentials.
+Recommender System + DevOps Essentials.
 ### Task
-Implement and deploy a production-ready recommendation system.
+Implement and deploy a production-ready recommender system.
 The current homework consists of two parts: The Data Science Part and The DevOps Essentials.
-Firstly, you need to train a competitive recommendation system, and secondly: wrap your code into a production-ready artifact, which may be deployed on any Linux server in one command.
+Firstly, you need to train a competitive recommender system, and secondly: wrap your code into a production-ready artifact, which may be deployed on any Linux server in one command.
 ### Before we start 
-Data science is an industry that is fully based on tons of open source tools, supported by a wide community. Whenever you, as a Data Scientist, train a model in the Jupyter environment, you have to understand that this moment is only a starting point in the lifecycle of the model, which is assumed to be deployed on the production server. On **Linux** Server. Hiring Junior DS, I always prefer ones with at least basic Linux exposure and Command Line Interface (_CLI_) experience.
+Data science is an industry that is fully based on tons of open source tools, supported by a wide community. Whenever you, as a Data Scientist, train a model in the Jupyter environment, you have to understand that this moment is only a starting point in the lifecycle of the model, which is assumed to be deployed on the production server. On **Linux** Server. Hiring a Junior DS, I prefer one with at least basic Linux exposure and Command Line Interface (_CLI_) experience.
 ###### Linux users:
 :thumbsup:
 ###### Windows users:
@@ -46,7 +46,7 @@ foo@bar:~$ python model.py predict --dataset=/path/to/evaluation/dataset !!!!FOR
 ##### 1. Data Science in Jupyter
 !!DESCRIBE Methods, SOTAS ETC!!!
 ##### 2. Pack into git repo
-At this point we expect to see fully working CLI application
+At this point we expect to see fully working CLI application in the `master` branch
 ##### 3. REST API interface fith `Flask`
 Serving on port 5000. Do not forget to catch and log Error 500. It is a good Idea to test your API from Jupyter Notebook with `requests` module.
 Endpoints:
@@ -80,3 +80,95 @@ If those steps are completed, I do not need to take care of the dependencies and
 ### Useful Resources
 - [PyCharm: Python IDE](https://www.jetbrains.com/pycharm/)
 - [Markdown Editor](https://dillinger.io/)
+
+
+
+--------------
+### Grade
+```
+grade = 
+    quality_score 
+    - (1.0 * days_expired) 
+    - implementation_penalty 
+    + optional_tasks_score
+```
+
+
+--------------
+### Implementation penalties
+We also require that you fulfill the following requirements. Not fulfilling them will result in score penalties.
+* (Up to `-2.0 points` if missing) Logging. Your tensorboard/W&B logs should include:
+  * Text reports with random samples, including `target: {target_text}, prediction: {prediction_text}, CER: {cer}, WER: {wer}`
+  * Images of your train/valid spectrograms
+  * Gradient norm
+  * Learning rate
+  * Loss
+  * audio records (after augmentation)
+* (Up to `-2.0 points` if missing) Implement a simple beam search for evaluation
+* (Up to `-1.0 points` if missing) Implement at least 4 types of audio augmentations
+
+
+--------------
+### Quality score
+
+| Score  | Dataset | CER | WER| Description|
+| ------------- | ------------- | -https://dillinger.io/------------ | ------------- | -------------      |
+| 1.0 | -- | -- | -- | At least you tried |
+| 2.0 | LibriSpeech: test-clean | 75 | -- | It's probably just predicting common characters at this point |
+| 3.0 | LibriSpeech: test-clean | 50 | -- | Well, it's something |
+| 4.0 | LibriSpeech: test-clean | 30 | -- | You can guess the target phrase if you try |
+| 5.0 | LibriSpeech: test-clean | 20 | -- | It gets some words right |
+| 6.0 | LibriSpeech: test-clean | -- | 40 | More than half of the words are looking fine |
+| 7.0 | LibriSpeech: test-clean | -- | 30 | It's quite readable |
+| 8.0 | LibriSpeech: test-clean | -- | 20 | Occasional mistakes  |
+| 9.0 | LibriSpeech: test-other | -- | 20 | Your network can handle noisy audio. Good job. |
+| 10.0 | LibriSpeech: test-other | -- | 10 | Technically better than a human. Well done! |
+
+__Note__: all the results will be sanity-checked on an unannounced dataset. 
+So it's not a good idea to fine-tune on a test set. 
+It will be considered cheating.
+
+--------------
+### Optional tasks
+* (`+1.0`) BPE instead of characters. You can use SentencePiece, HuggingFace, or YouTokenToMe.
+* (`+1.5`) Use an external language model for evaluation. The choice of an LM-fusion method is up to you.
+* (up to `+3.0`) Train a LAS/RNN-T model (instead CTC / with CTC). Don't forget to log your attention matrices. 
+  You can skip beam-search or implement it for an extra *+1.0*
+* (`+3.0`) Russian ASR. We will use test part of the russian Common Voice dataset for estimating your `quality_score`. 
+  Note: this option has a high score value, but russian language is generally more difficult to recognize, 
+  so expect your WERs and CERs to be lower on average compared to an English dataset.
+
+--------------
+### Bonus points / penalties
+We can subtract or add up to `1.0 points` for extremely bad or surprisingly clean code structure.
+
+--------------
+### Recommended workflow
+
+Recommended archetectures:
+* [QuartzNet](https://arxiv.org/abs/1910.10261)
+* [Jasper](https://arxiv.org/pdf/1904.03288.pdf)
+* [DeepSpeech2](http://proceedings.mlr.press/v48/amodei16.pdf)
+
+Training a good NN model is a challenging task that is extremely difficult to debug.
+We recommend you follow these steps:
+1) Overfit your model on a single batch of examples
+2) Train your model in LJ-speech dataset (until you achieve at least 30 WER on LJ-speech test set)
+3) Fine-tune your model on Librispeech dataset (until you achieve at least 30 WER on Libirispeech clean test set)
+4) Fine-tune your model on a mix of Librispeech and Common Voice datasets (for extra quality on Librispeech test sets)
+
+
+If you run out of time during one of these steps, you can always submit your somewhat good result and 
+  avoid getting deadline penalties.
+
+Links: 
+* [Mozilla Common Voice (en)](https://commonvoice.mozilla.org/ru)  
+* [LibriSpeech](https://www.openslr.org/12)
+* [LJ Speech](https://keithito.com/LJ-Speech-Dataset/)
+
+To save some coding time it is recommended to use [HuggingFace dataset library](https://github.com/huggingface/datasets). 
+Look how easy it is:
+```
+from datasets import load_dataset
+dataset = load_dataset("librispeech_asr", split='train-clean-360')
+```
