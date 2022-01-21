@@ -98,7 +98,7 @@ Please, note that cheating with metrics will lead you to the grade 0.
 
 ###### 5.2 DevOps part  
   
-| Points         | RMSE     | Description |
+| Points         | Bulletpoint     | Description |
 |--------------|-----------|------------|
 | 15     | model.py      |    The model is properly packed into the class inside *.py file. CLI interface works well: train, evaluate, predict.      |
 | 5      | git workflow  | Publicly available repo. dev and master branches. Regular Commits. No Commit Rush. Meaningful comment for each commit.        |
