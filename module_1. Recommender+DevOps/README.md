@@ -90,8 +90,9 @@ If those steps are completed, I do not need to take care of the dependencies and
 | 20      | < 0.95  | Baseline with Matrix Factorisation. Compulsory for everyone.       |
 | 10      | < 0.9  | Doable       |
 | 10      | < 0.85  | SOTA-ish without features       |
-| 10      | < 0.83  | Close to SOTA       |
-_  
+| 10      | < 0.83  | Close to SOTA       |  
+
+
 __Total: 50 points__  
 Please, note that cheating with metrics will lead you to the grade 0.
 
@@ -106,8 +107,9 @@ Please, note that cheating with metrics will lead you to the grade 0.
 | 5      | REST API      | Working API with Flask and WSGI. Endpoints according to description above. Catch and log 500       |
 | 3      | docker        | working API in a docker container. Shared folder for all the artifacts (model files, logs)      |
 | 2      |docker-compose | working docker-compose file       |
-| 5      | CICD          | working actions file. merge or commit to master -> build and push docker image to dockerhub       |
-_  
+| 5      | CICD          | working actions file. merge or commit to master -> build and push docker image to dockerhub       |  
+
+
 __Total: 50 points__ 
 
 ### Useful Resources
