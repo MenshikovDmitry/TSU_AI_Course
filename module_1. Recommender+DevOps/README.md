@@ -91,6 +91,7 @@ If those steps are completed, I do not need to take care of the dependencies and
 | 10      | < 0.9  | Doable       |
 | 10      | < 0.85  | SOTA-ish without features       |
 | 10      | < 0.83  | Close to SOTA       |
+_  
 __Total: 50 points__  
 Please, note that cheating with metrics will lead you to the grade 0.
 
@@ -106,6 +107,7 @@ Please, note that cheating with metrics will lead you to the grade 0.
 | 3      | docker        | working API in a docker container. Shared folder for all the artifacts (model files, logs)      |
 | 2      |docker-compose | working docker-compose file       |
 | 5      | CICD          | working actions file. merge or commit to master -> build and push docker image to dockerhub       |
+_  
 __Total: 50 points__ 
 
 ### Useful Resources
