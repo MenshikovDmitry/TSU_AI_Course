@@ -114,5 +114,6 @@ __Total: 50 points__
 
 ### Useful Resources
 - [PyCharm: Python IDE](https://www.jetbrains.com/pycharm/)
+- [SmartGit: Git Client](https://www.syntevo.com/smartgit/) However, it is nice to be familiar with git CLI.
 - [Markdown Editor](https://dillinger.io/)
 - [MovieLens Data Exploration](https://github.com/Lal4Tech/movielens-data-exploration/blob/master/src/main/code/exploratory_analysis.ipynb)
