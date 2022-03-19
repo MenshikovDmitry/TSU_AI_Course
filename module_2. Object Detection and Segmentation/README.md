@@ -45,7 +45,7 @@ We are going to evaluate the model with the IoU metric.
 At this point we expect to see fully working CLI application in the `master` branch.
 Your goal is a pretty-looking demo for the Customer. You may want to store your model weights somewhere on the Internet for quick access.
 
-###Grades
+### Grades
   
 | Points | Bulletpoint     | Description                                                                                                                                                                             |
 |--------|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
