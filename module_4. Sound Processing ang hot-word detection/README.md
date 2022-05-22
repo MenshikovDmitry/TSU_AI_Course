@@ -22,9 +22,9 @@ You are required to
 1) Collect a dataset, implement a hot-word detector and spot the secret words in the wav file 
 2) Implement a service to listen the broadcast and spot the rest secret words.
   
-[wav file]() (will be available soon) Example: first secret word could be spotted at \__:__.  
+[wav file](https://disk.yandex.ru/d/OmsSYy154gfDuA) Example: first secret word could be spotted at 1:49.  
 [Test Broadcast](http://maslovka-home.ru:8000/soundcheck) is available 24/7. Does NOT contain secret words. Consists of the same source files.  
-[Real Broadcast](http://maslovka-home.ru:8000/thanosshow) (Not available yet) - works only for 1 hour each night 4am GMT+7.  
+[Real Broadcast](http://maslovka-home.ru:8000/thanosshow) Works only once each night 4am GMT+7.  
 Guys, this is my private home server, please, do not DDOS it. I also kindly remind you that it is not a penetration testing homework ;-).  
 
 --------------
@@ -42,7 +42,7 @@ We don't accept homework if any of the following requirements are not satisfied:
 
 ### Dataset
 No dataset is provided this time. The only thing we know is that the hot-word is 'STONES'.
-My suggestion is to collaborate and create your own dataset of 1 second-length files. [HERE]() (not available yet) you 
+My suggestion is to collaborate and create your own dataset of 1 second-length files. [HERE](https://disk.yandex.ru/d/6B0vPmB52BEMqw) you 
 can find hot words used in transmission. 
 
 ### Hints
@@ -64,11 +64,11 @@ Connect to the stream and try to process it in real time to detect the rest of t
 | 10     | Dataset                                         | You have a sufficient dataset.                                                                                                                   |
 | 25     | Your model is able to parse the long *.wav file | Your detector catches all 5 words. Exact time of appearance is reflected. The fragments of interest are saved locally.                           |
 | 10     | Intersept the transmission and save it locally  | Your have implemented a service to wait and record the broadcast.                                                                                |
-| 20     | Hot-word detector **service**                   | Your service is able to run in an autonomous manner, detect the broadcast and process it in real-time. Another 5 words are collected.            |
+| 25     | Hot-word detector **service**                   | Your service is able to run in an autonomous manner, detect the broadcast and process it in real-time. Another 5 words are collected.            |
 | 5      | module.py                                       | The model is properly packed into the class inside *.py file. CLI interface works well: train, evaluate, demo if applicable.                     |
 | 5      | git workflow                                    | Publicly available repo. dev and master branches. Regular Commits. No Commit Rush. Meaningful comment for each commit.                           |
 | 5      | nice repo                                       | User manual for using your code.                                                                                                                 
-| 15     | Code quality                                    | Readable code. Clear OOP pattern. Well in-code comments. Build-in documentation for each function. No code duplicates. Meaningful variable names |
+| 10     | Code quality                                    | Readable code. Clear OOP pattern. Well in-code comments. Build-in documentation for each function. No code duplicates. Meaningful variable names |
 | 5      | Logging                                         | Catch and log all possible errors. Singleton logging pattern (use logging module)                                                                |
 
 
