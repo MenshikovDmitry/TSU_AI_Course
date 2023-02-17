@@ -1,6 +1,6 @@
 # Homework 1 
 Recommender System + DevOps Essentials.
-__DEADLINE:  --.--.2022__
+__DEADLINE:  --.--.2023__
 ### Task
 Implement and deploy a production-ready recommender system.
 The current homework consists of two parts: The Data Science Part and The DevOps Essentials.
@@ -10,7 +10,7 @@ Data science is an industry that is fully based on tons of open source tools, su
 ###### Linux users:
 :thumbsup:
 ###### Windows users:
-You can deal with the Data Science part of this homework, sitting on Windows and using Colab. However, you may struggle with the DevOps part when you reach Docker and docker-compose. I do encourage you to consider having Linux as a second operating system on your machine. Check out Ubuntu 20.04, it is friendly enough.
+You can deal with the Data Science part of this homework, sitting on Windows and using Colab. However, you may struggle with the DevOps part when you reach Docker and docker-compose. I do encourage you to consider having Linux as a second operating system on your machine. Check out Ubuntu 22.04, it is friendly enough.
 ###### Mac users:
 Mac OS has a FreeBSD core in its heart and in general, it is much closer to Linux than Windows. Lots of DS and DE use Mac. I personally not a Mac user, so I can not support you in case of issues. I will do my best though.
 
@@ -35,9 +35,9 @@ We don't accept homework if any of the following requirements are not satisfied:
 ```console
 foo@bar:~$ python model.py train --dataset=/path/to/train/dataset
 foo@bar:~$ python model.py evaluate --dataset=/path/to/evaluation/dataset
-foo@bar:~$ python model.py predict --dataset=/path/to/evaluation/dataset !!!!FORMAT
+foo@bar:~$ python model.py predict --dataset=/path/to/evaluation/dataset
 ```
-- Flask Application `flask_app.py`. Runs REST API service on port 5000. 
+- Flask Application (feel free to use FastAPI or other frameworks) `flask_app.py`. Runs REST API service on port 5000. 
  - `Dockerfile`
 - `docker-compose.yaml`
 - CI/CD script for github or gitlab
@@ -57,12 +57,16 @@ At this point we expect to see fully working CLI application in the `master` bra
 ##### 3. REST API interface fith `Flask`
 Serving on port 5000. Do not forget to catch and log Error 500. It is a good Idea to test your API from Jupyter Notebook with `requests` module.
 Endpoints:
-- `/api/predict`. Recieves list `[[movie_id_1, movie_id_2, .., movie_id_N ], [rating_1, rating_2, .., rating_N]]` and returns TOP M (default 20, also a parameter) recommended movies with corresponding estimated rating. Sort descending. `[[movie_name_1, movie_name_2, .., movie_name_M], [rating_1, rating_2, .., rating_M]]`
+- `/api/predict`. Recieves list `[[movie_name_1, movie_name_2, .., movie_name_N ], [rating_1, rating_2, .., rating_N]]` and returns TOP M (default 20, also a parameter) recommended movies with corresponding estimated rating. Sort descending. `[[movie_name_1, movie_name_2, .., movie_name_M], [rating_1, rating_2, .., rating_M]]`
 - `/api/log`. Last 20 rows of log.
 - `/api/info`. Service Information: Your Credentials, Date and time of the build of the Docker image, Date, time and metrics of the training of the currently deployed model.
 - `/api/reload`. Reload the model.
+- `/api/similar`. returns list of similar movies `{"movie_name": "Lord of the Rings"}`  
+  
+ Please, Note, that API call contains movie names, not IDs. You must handle this on the server side.  
+Expose the port with ngrok, so I could play around with your APIs at the final practice session
 ##### 4. Docker and docker-compose
-Docker basically locks your application inside the virtual environment called a container, containing the necessary dependencies. The container wipes everything after the restart. You do not want to pack the model artifacts to the docker image. Instead, map the local folder "data" with corresponding folder inside the container. Keep the artifacts like model data and log file persistant.
+Docker basically locks your application inside the virtual environment called a container, containing the necessary dependencies. The container wipes everything after the restart. You do not want to pack the model artifacts to the docker image. Instead, map the local folder "data" with corresponding folder inside the container. Keep the artifacts like model data and log file persistent.
 - remember to expose port 5000
 - map 5000 port of the container and 5000 (or any other) of your machine
 - map 'data' folders
@@ -114,6 +118,5 @@ __Total: 50 points__
 
 ### Useful Resources
 - [PyCharm: Python IDE](https://www.jetbrains.com/pycharm/)
-- [SmartGit: Git Client](https://www.syntevo.com/smartgit/) However, it is nice to be familiar with git CLI.
 - [Markdown Editor](https://dillinger.io/)
 - [MovieLens Data Exploration](https://github.com/Lal4Tech/movielens-data-exploration/blob/master/src/main/code/exploratory_analysis.ipynb)
