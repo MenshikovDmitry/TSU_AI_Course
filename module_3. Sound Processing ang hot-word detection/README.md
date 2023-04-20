@@ -1,4 +1,4 @@
-# Homework 4
+# Homework 3
 Sound Processing and hot-word detection.
 __DEADLINE:  you_know_when__
 ### Task
