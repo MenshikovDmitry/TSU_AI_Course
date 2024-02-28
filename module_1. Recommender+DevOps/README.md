@@ -1,6 +1,6 @@
 # Homework 1 
 Recommender System + DevOps Essentials.
-__DEADLINE:  --.--.2023__
+__DEADLINE:  --.--.2024__
 ### Task
 Implement and deploy a production-ready recommender system.
 The current homework consists of two parts: The Data Science Part and The DevOps Essentials.
@@ -18,10 +18,10 @@ Mac OS has a FreeBSD core in its heart and in general, it is much closer to Linu
 ### Requirements
 We don't accept homework if any of the following requirements are not satisfied:
 - The code should be situated in a public github (or gitlab) repository. Two branches: `dev` for development and `master` for the latest working version.
-- All the necessary packages should be mentioned in `./requirements.txt`
+- project dependancies are managed with [poetry](https://python-poetry.org/)
 - Sufficient `README.md` file:
     - Your credentials
-    - "**How To**" for your repo: train model, evaluate, deploy. With and without docker.
+    - "**How To**" for your repo: Set up the environment, train the model, evaluate, deploy. With and without docker.
     - Resources you utilized
 - Your code must be fully covered with logging to `./data/log_file.log`. The file should be viewable and downloadable
 - Proper `.gitignore` file. You do not want rubbish in your repo.
@@ -29,7 +29,7 @@ We don't accept homework if any of the following requirements are not satisfied:
     - `train`. Recieves the dataset filename. Performes model training. Saves the artifacts to `./model/`. Logs the results.
     - `evaluate`. Recieves the dataset filename. Loads the model from `./data/model/`. Evaluates the model with the provided dataset, prints the results and saves it to the log.
     - `predict`. Recieves list `[[movie_id_1, movie_id_2, .., movie_id_N ], [rating_1, rating_2, .., rating_N]]` and returns TOP M (also a parameter) recommended movies with estimated rating in the same as input format.
-    - `warmup`. Loads the model from `./data/model/`. Refresh if it is already loaded.
+    - `warmup`. Loads the model from `./data/model/`. Refreshes the model if it is already loaded.
     - `find_similar`. Returns N (parameter, default=5) most similar movies for input `movie_id`. Returns list `[[movie_id_1, movie_id_2, .., movie_id_N ], [[movie_name_1, movie_name_2, .., movie_name_N]]]` Descending sorting by similarity.
 - An integrated script for training and evaluation from CLI (check out `if __name__ == '__main__':`) so that:
 ```console
@@ -37,6 +37,7 @@ foo@bar:~$ python model.py train --dataset=/path/to/train/dataset
 foo@bar:~$ python model.py evaluate --dataset=/path/to/evaluation/dataset
 foo@bar:~$ python model.py predict --dataset=/path/to/evaluation/dataset
 ```
+- Checkout [fire.fire](https://github.com/google/python-fire). It might help you to create the CLI app. It is too good to be true :).
 - Flask Application (feel free to use FastAPI or other frameworks) `flask_app.py`. Runs REST API service on port 5000. 
  - `Dockerfile`
 - `docker-compose.yaml`
@@ -50,7 +51,7 @@ Feel free to stick to Jupyter or Colab environment. Here we expect you to build 
  1) A baseline recommender build on Collaborative filtering and matrix factorization of your choice.  You are only allowed to use standard python packages including pandas, numpy, sklearn, etc.  
  2) Custom Recommender based on the method of your choice.
 
-For both tasks, please, refer to target metrics at the end of README.
+For both tasks, please, refer to target metrics at the end of current README.
 
 ##### 2. Pack into git repo
 At this point we expect to see fully working CLI application in the `master` branch
@@ -108,7 +109,7 @@ Please, note that cheating with metrics will lead you to the grade 0.
 | 5      | git workflow  | Publicly available repo. dev and master branches. Regular Commits. No Commit Rush. Meaningful comment for each commit.        |
 | 10     |Code quality   | Clear OOP pattern. Well in-code comments. Build-in documentation for each function. No code duplicates. Meaningful variable names       |
 | 5      | Logging       |Catch and log all possible errors. Singleton logging pattern (use logging module)      |
-| 5      | REST API      | Working API with Flask and WSGI. Endpoints according to description above. Catch and log 500       |
+| 5      | REST API      | Working API with Flask and **WSGI**. Endpoints according to description above. Catch and log 500       |
 | 3      | docker        | working API in a docker container. Shared folder for all the artifacts (model files, logs)      |
 | 2      |docker-compose | working docker-compose file       |
 | 5      | CICD          | working actions file. merge or commit to master -> build and push docker image to dockerhub       |  
