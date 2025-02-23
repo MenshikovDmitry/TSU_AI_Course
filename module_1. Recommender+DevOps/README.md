@@ -1,6 +1,6 @@
 # Homework 1 
 Recommender System + DevOps Essentials.
-__DEADLINE:  --.--.2024__
+__DEADLINE:  --.--.2025__
 ### Task
 Implement and deploy a production-ready recommender system.
 The current homework consists of two parts: The Data Science Part and The DevOps Essentials.
@@ -10,7 +10,7 @@ Data science is an industry that is fully based on tons of open source tools, su
 ###### Linux users:
 :thumbsup:
 ###### Windows users:
-You can deal with the Data Science part of this homework, sitting on Windows and using Colab. However, you may struggle with the DevOps part when you reach Docker and docker-compose. I do encourage you to consider having Linux as a second operating system on your machine. Check out Ubuntu 22.04, it is friendly enough.
+You can deal with the Data Science part of this homework, sitting on Windows and using Colab. However, you may struggle with the DevOps part when you reach Docker and docker-compose. I do encourage you to consider having Linux as a second operating system on your machine. Check out Ubuntu 24.04, it is friendly enough.
 ###### Mac users:
 Mac OS has a FreeBSD core in its heart and in general, it is much closer to Linux than Windows. Lots of DS and DE use Mac. I personally not a Mac user, so I can not support you in case of issues. I will do my best though.
 
